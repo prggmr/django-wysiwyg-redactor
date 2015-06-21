@@ -187,22 +187,28 @@ Manual JS Loading
 
 Turns off automatically including redactor JS loading on page load.
 
-.. code-block::
+.. code-block:: python
     
     // Settings option
     REDACTOR_OPTIONS = {'nojs': True}
 
 The following JS files must be included in order to load the editor.
 
-.. code-block::
+.. code-block:: html
 
     <script type="text/javascript" src="{% static 'redactor/jquery.redactor.init.js' %}"></script>
     <script type="text/javascript" src="{% static 'redactor/redactor.js' %}"></script>
+    
+You must include all plugins and language files manually.
+    
+.. code-block:: html
+
     <script type="text/javascript" src="{% static 'redactor/langs/en.js' %}"></script>
+    <script type="text/javascript" src="{% static 'redactor/plugins/tables.js' %}"></script>
 
-Note when loading redactor through ajax you must call the following JS to initialize redactor.
+When loading forms through ajax you must call the following JS to initialize redactor editors.
 
-.. code-block::
+.. code-block:: javascript
 
     $('textarea.redactor-box:not([id*="__prefix__"])').each(function() {
         $(this).trigger('redactor:init');
